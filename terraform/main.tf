@@ -6,6 +6,8 @@ terraform {
  }
 }
 provider "google" {
+
+  project = "comp698-dml1037"
   region = "us-central1"
 }
 
