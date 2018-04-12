@@ -9,12 +9,12 @@ provider "google" {
   region = "us-central1"
 }
 
-
 //manager
 resource "google_compute_instance_template" "instance_template" {
   name_prefix  = "instance-template-"
   machine_type = "n1-standard-1"
   region       = "us-central1"
+  project = "comp698-dml1037"
 
   // boot disk
   disk {
