@@ -9,32 +9,30 @@ provider "google" {
   region = "us-central1"
 }
 
-//manager
-resource "google_compute_instance_template" "instance_template" {
-  name_prefix  = "instance-template-"
-  machine_type = "n1-standard-1"
-  region       = "us-central1"
+resource "google_compute_instance_template" "tf-server" {
+  name = "tf-server"
   project = "comp698-dml1037"
-
-  // boot disk
   disk {
-    # ...
+    source_image = "cos-cloud/cos-stable"
   }
-
-  // networking
+  machine_type = "n1-standard-1"
   network_interface {
-    # ...
-  }
-
-  lifecycle {
-    create_before_destroy = true
+    network = "default"
   }
 }
 
-resource "google_compute_instance_group_manager" "instance_group_manager" {
-  name               = "instance-group-manager"
-  instance_template  = "${google_compute_instance_template.instance_template.self_link}"
-  base_instance_name = "instance-group-manager"
-  zone               = "us-central1-f"
-  target_size        = "1"
+resource "google_compute_instance_group_manager" "default" {
+  name = "tf-manager"
+  project = "comp698-dml1037"
+  zone = "us-central1-f"
+  base_instance_name = "app"
+  instance_template  = "${google_compute_instance_template.tf-server.self_link}"
+  target_size = 2
+
+}
+
+resource "google_storage_bucket" "image-store" {
+  project  = "comp698-dml1037"
+  name     = "ilikebruins"
+  location = "us-central1"
 }
