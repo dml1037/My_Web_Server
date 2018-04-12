@@ -9,8 +9,8 @@ provider "google" {
   region = "us-central1"
 }
 
-resource "google_compute_instance_template" "tf-server" {
-  name = "tf-server"
+resource "google_compute_instance_template" "tf-my-web-server" {
+  name = "tf-my-web-server"
   project = "comp698-dml1037"
   disk {
     source_image = "cos-cloud/cos-stable"
@@ -33,6 +33,6 @@ resource "google_compute_instance_group_manager" "default" {
 
 resource "google_storage_bucket" "image-store" {
   project  = "comp698-dml1037"
-  name     = "ilikebruins"
+  name     = "danielleweb"
   location = "us-central1"
 }
