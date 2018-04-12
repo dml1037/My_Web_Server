@@ -35,6 +35,6 @@ resource "google_compute_instance_group_manager" "default" {
 
 resource "google_storage_bucket" "image-store" {
   project  = "comp698-dml1037"
-  name     = "bambam"
+  name     = "isunburntooeasily"
   location = "us-central1"
 }
