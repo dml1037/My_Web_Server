@@ -26,7 +26,7 @@ resource "google_compute_instance_group_manager" "default" {
   project = "comp698-dml1037"
   zone = "us-central1-f"
   base_instance_name = "app"
-  instance_template  = "${google_compute_instance_template.tf-server.self_link}"
+  instance_template  = "${google_compute_instance_template.tf-my-web-server.self_link}"
   target_size = 2
 
 }
