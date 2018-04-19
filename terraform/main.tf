@@ -37,6 +37,14 @@ EOF
   }
 
   tags = ["http-server"]
+
+  service_account {
+    scopes = [
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/devstorage.read_write",
+    ]
+  }
 }
 
 resource "google_compute_instance_group_manager" "default" {
@@ -54,3 +62,4 @@ resource "google_storage_bucket" "image-store" {
   name     = "isunburntooeasily"
   location = "us-central1"
 }
+
