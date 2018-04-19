@@ -20,6 +20,8 @@ resource "google_compute_instance_template" "tf-my-web-server" {
   machine_type = "n1-standard-1"
   network_interface {
     network = "default"
+    access_config {
+    }
   }
 
   metadata {
@@ -33,6 +35,8 @@ spec:
   restartPolicy: Always
 EOF
   }
+
+  tags = ["http-server"]
 }
 
 resource "google_compute_instance_group_manager" "default" {
