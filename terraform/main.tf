@@ -32,9 +32,9 @@ resource "google_compute_instance_template" "tf-server" {
   }
   metadata {
       gce-container-declaration = <<EOF
-  spec:
+  spec: 
     containers:
-    - image: 'gcr.io/comp698-dml1037/github-dml1037-my_web_server:8df295e7641bfb190ff365b22fc9b24d85066529'
+    - image: 'gcr.io/comp698-dml1037/github-dml1037-my_web_server:3b1e53db468a291ac50aaf4fab86ddb53eddb815'
       name: service-container
       stdin: false
       tty: false
@@ -68,7 +68,7 @@ resource "google_compute_instance_template" "tf-server2" {
       gce-container-declaration = <<EOF
   spec:
     containers:
-    - image: 'gcr.io/comp698-dml1037/github-dml1037-my_web_server:8df295e7641bfb190ff365b22fc9b24d85066529'
+    - image: 'gcr.io/comp698-dml1037/github-dml1037-my_web_server:3b1e53db468a291ac50aaf4fab86ddb53eddb815'
       name: service-container
       stdin: false
       tty: false
